@@ -3,6 +3,8 @@
   (:types
     qr::object
     qr::value
+    qr::string - qr::value
+
     qr::link  - qr::object
     qr::joint - qr::object
     qr::chain - qr::object
@@ -56,7 +58,7 @@
 
     ; ?x: a kinematic chain
     ; ?c: a list of values
-      (chain-conf ?x - qr::chain ?c - qr::chain-conf)
+    (chain-conf ?x - qr::chain ?c - qr::chain-conf)
 
     ; ?x: a body
     ; ?y: a link of the robot
@@ -70,5 +72,13 @@
     ; ?x: the name of the body
     ; ?color: the color of the box, as a tuple of (r, g, b, a)
     (qrgeom::box-color ?x - qr::body ?color - qr::color)
+
+    (urdf::prop ?x - qr::body ?name - qr::string ?value - qr::value)
+    (urdf::load-arg ?x - qr::body ?name - qr::string ?value - qr::value)
+
+    (sim::camera-distance ?value - qr::value)
+    (sim::camera-yaw ?value - qr::value)
+    (sim::camera-pitch ?value - qr::value)
+    (sim::camera-look-at ?value - qr::value)
   )
 )
