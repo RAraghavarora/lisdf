@@ -13,6 +13,7 @@
     qr::joint-conf - qr::value
     qr::chain-conf - qr::value
     qr::color      - qr::value  ; (r, g, b, a)
+    qr::inertia    - qr::value  ; (ixx, iyy, izz)
 
     qr::pose   - qr::value  ; (x, y, z, roll, pitch, yaw)
     qr::pose2d - qr::value  ; (x, y)
@@ -72,6 +73,18 @@
     ; ?x: the name of the body
     ; ?color: the color of the box, as a tuple of (r, g, b, a)
     (qrgeom::box-color ?x - qr::body ?color - qr::color)
+
+    ; ?x: the name of the body
+    ; ?mass: the mass of the body (in kilograms) as a float
+    (qrgeom::box-mass ?x - qr::body ?mass - qr::value)
+  
+    ; ?x: the name of the body
+    ; ?inertia: the diagonal inertia (ixx, iyy, izz) of the body
+    (qrgeom::box-inertia ?x - qr::body ?inertia - qr::inertia)
+  
+    ; ?x: the name of the body
+    ; ?contact: contact model of the body, either "point" or "hydroelastic"
+    (qrgeom::box-contact-model ?x - qr::body ?contact_model - qr::string)
 
     (urdf::prop ?x - qr::body ?name - qr::string ?value - qr::value)
     (urdf::load-arg ?x - qr::body ?name - qr::string ?value - qr::value)
